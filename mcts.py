@@ -16,11 +16,11 @@ def playout(state):
 
 # 원시 몬테카를로 탐색을 활용한 행동 선택
 def mcs_action(state):
-    # 합법적인 수 별로 10회 플레이아웃 시행 후, 상태 가치의 합계 계산
+    # 합법적인 수 별로 50회 플레이아웃 시행 후, 상태 가치의 합계 계산
     legal_actions = state.legal_actions()
     values = [0] * len(legal_actions)
     for i, action in enumerate(legal_actions):
-        for _ in range(10):
+        for _ in range(50):
             values[i] += -playout(state.next(action))
 
     # 합법적인 수의 상태 가치 합계의 최대값을 가지는 행동 반환
@@ -63,7 +63,7 @@ def mcts_action(state):
                 self.n += 1
 
                 # 자녀 노드 전개
-                if self.n == 10: 
+                if self.n == 50: 
                     self.expand()
                 return value
 
