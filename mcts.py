@@ -106,8 +106,8 @@ def mcts_action(state):
     root_node = Node(state)
     root_node.expand()
 
-    # 100회 시뮬레이션 실행
-    for _ in range(100):
+    # 150회 시뮬레이션 실행
+    for _ in range(150):
         root_node.evaluate()
 
     # 시행 횟수가 가장 큰 값을 갖는 행동 반환
